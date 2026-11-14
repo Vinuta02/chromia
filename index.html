@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chromia | Color palette generator</title>
+  <meta name="description" content="Describe your project and Chromia builds the palette. Color wheel, tints, gradients, HEX/RGB/HSL/HSB codes, and color blindness checks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top">Chromia</a>
+    <nav aria-label="Sections">
+      <a href="#generator">Generator</a><a href="#moods">Moods</a><a href="#wheel-sec">Wheel</a><a href="#tints-sec">Tints</a><a href="#gradients">Gradients</a><a href="#access">Accessibility</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <h1>Color palettes that fit what you're making.</h1>
+    <p>Describe your project, pick a mood, or spin the wheel. Chromia builds the palette, checks it for contrast and color blindness, and gives you the code.</p>
+    <form id="ai-form" class="ai">
+      <label class="sr-only" for="ai-input">Describe your design</label>
+      <input id="ai-input" type="text" placeholder="e.g. calm meditation app, bold fitness brand" autocomplete="off">
+      <button class="btn primary" type="submit">Create palette</button>
+    </form>
+    <div class="chips" id="chips"></div>
+    <p id="ai-note" class="note" role="status"></p>
+  </section>
+
+  <section class="sec" id="generator">
+    <h2>Generator</h2>
+    <p class="lead">Lock the colors you like, then generate the rest. Switch formats, pick a harmony, or shift the tone with presets and sliders.</p>
+    <div class="tools">
+      <select id="mode" class="btn" aria-label="Harmony mode">
+        <option value="random">Random</option><option value="analogous">Analogous</option><option value="complementary">Complementary</option><option value="triadic">Triadic</option><option value="monochrome">Monochrome</option>
+      </select>
+      <div class="seg" id="fmt" role="group" aria-label="Color format">
+        <button type="button" data-f="hex" aria-pressed="true">HEX</button><button type="button" data-f="rgb" aria-pressed="false">RGB</button><button type="button" data-f="hsl" aria-pressed="false">HSL</button><button type="button" data-f="hsb" aria-pressed="false">HSB</button>
+      </div>
+      <button id="save" class="btn" type="button">Save</button>
+      <button id="copyall" class="btn" type="button">Copy all</button>
+      <button id="css" class="btn" type="button">Copy CSS</button>
+      <button id="generate" class="btn primary" type="button">Generate <kbd>Space</kbd></button>
+    </div>
+    <div id="palette" class="palette" aria-label="Color palette"></div>
+    <div class="tune">
+      <label>Saturation <input id="sat" type="range" min="-50" max="50" value="0"></label>
+      <label>Lightness <input id="lit" type="range" min="-30" max="30" value="0"></label>
+      <div class="seg" id="presets" role="group" aria-label="Tone presets">
+        <button type="button" data-p="soft">Soft</button><button type="button" data-p="pastel">Pastel</button><button type="button" data-p="vibrant">Vibrant</button><button type="button" data-p="deep">Deep</button><button type="button" data-p="muted">Muted</button>
+      </div>
+    </div>
+    <h3>Saved palettes</h3>
+    <div id="saved" class="saved"></div>
+  </section>
+
+  <section class="sec" id="moods">
+    <h2>Moods and stories</h2>
+    <p class="lead">Start from a feeling. Each palette comes with the scene it was built around.</p>
+    <div id="mood-grid" class="grid"></div>
+  </section>
+
+  <section class="sec" id="wheel-sec">
+    <h2>Color wheel</h2>
+    <p class="lead">Drag on the wheel to set the base hue and saturation. The current harmony mode shapes the rest of the palette.</p>
+    <div class="wheel-wrap">
+      <canvas id="wheel" width="300" height="300" tabindex="0" aria-label="Color wheel. Drag, or use arrow keys, to choose a base color."></canvas>
+      <p id="wheel-info" class="note">Use the pointer or arrow keys.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="tints-sec">
+    <h2>Tints and shades</h2>
+    <p class="lead">Nine steps from near-white to near-black for every color in the palette. Click any step to copy it.</p>
+    <div id="tints"></div>
+  </section>
+
+  <section class="sec" id="gradients">
+    <h2>Gradients</h2>
+    <p class="lead">Ready-made gradients built from your palette.</p>
+    <div id="grad-grid" class="grid"></div>
+  </section>
+
+  <section class="sec" id="access">
+    <h2>Accessibility</h2>
+    <p class="lead">See how your palette looks with common types of color blindness, and check text contrast for any pair of colors.</p>
+    <div id="cvd" class="cvd"></div>
+    <h3>Contrast checker</h3>
+    <div class="pair">
+      <label>Text <select id="fg" class="btn"></select></label>
+      <label>Background <select id="bg" class="btn"></select></label>
+    </div>
+    <div id="pair-sample" class="sample"><strong>Sample heading</strong><span>The quick brown fox jumps over the lazy dog.</span></div>
+    <p id="pair-result" class="note" role="status"></p>
+  </section>
+
+  <footer class="foot">Chromia. Built with vanilla HTML, CSS, and JavaScript.</footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
