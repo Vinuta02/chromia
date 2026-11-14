@@ -2,7 +2,7 @@
 
 A color palette generator for designers and developers. Describe your project, pick a mood, or spin the color wheel, and Chromia builds the palette, checks it for accessibility, and gives you the code.
 
-**Live demo:** [GitHub Pages](https://vinuta02.github.io/chromia/) | [Vercel](https://chromia.vercel.app)
+**Live demo:** [GitHub Pages](https://vinuta02.github.io/chromia/) | [Vercel](https://chromia-ten.vercel.app/)
 
 ## Features
 
