@@ -9,12 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="system.css">
+  <link rel="stylesheet" href="preview.css">
 </head>
 <body>
   <header class="nav">
     <a class="brand" href="#top">Chromia</a>
     <nav aria-label="Sections">
-      <a href="#generator">Generator</a><a href="#moods">Moods</a><a href="#wheel-sec">Wheel</a><a href="#tints-sec">Tints</a><a href="#gradients">Gradients</a><a href="#access">Accessibility</a>
+      <a href="#generator">Generator</a><a href="#moods">Moods</a><a href="#wheel-sec">Wheel</a><a href="#tints-sec">Tints</a><a href="#system">Design system</a><a href="#in-use">Preview</a><a href="#gradients">Gradients</a><a href="#access">Accessibility</a>
     </nav>
   </header>
 
@@ -78,6 +80,39 @@
     <div id="tints"></div>
   </section>
 
+    <section class="sec" id="system">
+    <h2>Design system</h2>
+    <p class="lead">Chromia turns your palette into 12 named roles for light and dark themes, adjusts colors until text passes WCAG AA, checks status colors for color blindness, and exports code you can use.</p>
+    <div class="sys-tools">
+      <div class="seg" id="export-seg" role="group" aria-label="Export format">
+        <button type="button" data-x="css" aria-pressed="true">CSS</button><button type="button" data-x="tailwind" aria-pressed="false">Tailwind</button><button type="button" data-x="json" aria-pressed="false">JSON</button>
+      </div>
+      <label class="chk"><input type="checkbox" id="autofix" checked> Auto-fix contrast to AA</label>
+      <button id="export-copy" class="btn primary" type="button">Copy code</button>
+    </div>
+    <div class="sys-grid">
+      <div id="roles" class="roles"></div>
+      <div id="preview" class="preview"></div>
+    </div>
+    <div id="sys-report" role="status"></div>
+    <pre id="export-code" class="code-block" tabindex="0" aria-label="Exported code"></pre>
+  </section>
+
+    <section class="sec" id="in-use">
+    <h2>See it in use</h2>
+    <p class="lead">Your palette applied to a landing page, a dashboard, and a mobile app, in light and dark themes. Describe a project at the top (like coffee shop or wedding invite), or pick a type below, and the preview changes to match. Take a screenshot for your portfolio.</p>
+    <div class="tools">
+      <div class="seg" id="pv-views" role="group" aria-label="Preview type">
+        <button type="button" data-v="landing" aria-pressed="true">Landing page</button><button type="button" data-v="dashboard" aria-pressed="false">Dashboard</button><button type="button" data-v="mobile" aria-pressed="false">Mobile app</button>
+      </div>
+      <div class="seg" id="pv-themes" role="group" aria-label="Preview theme">
+        <button type="button" data-t="light" aria-pressed="true">Light</button><button type="button" data-t="dark" aria-pressed="false">Dark</button>
+      </div>
+      <label class="pv-sel">Preview as <select id="pv-ind" class="btn"></select></label>
+    </div>
+    <div id="pv-stage" class="pv-stage" role="img"><div id="pv-mock"></div></div>
+  </section>
+
   <section class="sec" id="gradients">
     <h2>Gradients</h2>
     <p class="lead">Ready-made gradients built from your palette.</p>
@@ -100,5 +135,8 @@
   <footer class="foot">Chromia. Built with vanilla HTML, CSS, and JavaScript.</footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
+  <script src="system.js"></script>
+  <script src="industries.js"></script>
+  <script src="preview.js"></script>
 </body>
 </html>

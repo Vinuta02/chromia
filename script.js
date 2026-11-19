@@ -197,6 +197,8 @@
       lock.setAttribute('aria-label', `${locked ? 'Unlock' : 'Lock'} ${c.hex}`);
     });
     renderTints(v); renderGradients(v); renderCvd(v); renderPair(v); drawWheel(v);
+    window.chromiaColors = v.map((c) => c.hex);
+    document.dispatchEvent(new CustomEvent('chromia:paint'));
   }
 
   function renderTints(v) {
@@ -386,6 +388,8 @@
     e.preventDefault();
     generate();
   });
+
+  window.Chromia = { hexToHsl, hslToRgb, toHex, hexRgb, ratio, lum, simulate, copy, toast };
 
   /* ---------- Init ---------- */
   $('#chips').innerHTML = ['calm meditation app', 'bold fitness brand', 'cozy coffee shop', 'fintech dashboard', 'romantic wedding invite', 'eco travel blog']
